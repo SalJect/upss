@@ -30,7 +30,7 @@ app.use(function (req, res, next) {
 });
 app.use(express.json());
 
-app.all('/player/login/dashboard', (req, res) => {
+app.post('/player/login/dashboard', (req, res) => {
     const tData = {};
     let encData = "";
     try {
