@@ -11,7 +11,7 @@ Tutorial:
 ## Path Information
 
 - `/` - The main page
-- `/player/login/dashboard` - The dashboard for the login modals
+- `/player/login/dashboard` - Immediately redirect to the validate path
 - `/player/growid/login/validate` - The validation for the GrowID login
   
 ## Contact
