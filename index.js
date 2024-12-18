@@ -43,7 +43,7 @@ app.post('/player/login/dashboard', (req, res) => {
     res.status(302).redirect(`/player/growid/login/validate?token=${encData}`);
 });
 
-app.all('/player/growid/login/validate', (req, res) => {
+app.post('/player/growid/login/validate', (req, res) => {
     const _token = req.query.token;
     const growId = req.body.growId;
     const password = req.body.password;
@@ -57,7 +57,7 @@ app.all('/player/growid/login/validate', (req, res) => {
     );
 });
 
-app.all('/player/growid/checktoken', (req, res) => {
+app.post('/player/growid/checktoken', (req, res) => {
     const { refreshToken } = req.body;
     res.json({
         status: 'success',
