@@ -57,6 +57,17 @@ app.all('/player/growid/login/validate', (req, res) => {
     );
 });
 
+app.all('/player/growid/checktoken', (req, res) => {
+    const refreshToken = req.body;
+    let data = {
+        status: "success",
+        message: "Account Validated",
+        token = refreshToken,
+        url: "",
+        accountType: "growtopia"
+    };
+    res.send(data);
+});
 app.get('/', function (req, res) {
     res.send('Hello World!');
 });
