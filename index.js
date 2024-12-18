@@ -42,15 +42,19 @@ app.all('/player/login/dashboard', function (req, res) {
     res.render(__dirname + '/public/html/dashboard.ejs', {data: tData});
 });
 
-app.post('/player/growid/login/validate', (req, res) => {
-    const dummyTokenData = Buffer.from('_token=&growId=&password=').toString(
-        'base64',
-    );
+app.all('/player/growid/login/validate', (req, res) => {
+    const _token = req.body._token;
+    const growId = req.body.growId;
+    const password = req.body.password;
+
+    const token = Buffer.from(
+        `_token=${_token}&growId=${growId}&password=${password}`,
+    ).toString('base64');
+    const token2 = Buffer.from(`{ \"growid\": \"${growId}\", \"password\": \"${password}\"  }`).toString('base64');
     res.send(
-        `{"status":"success","message":"Account Validated.","token":${dummyTokenData},"url":"","accountType":"growtopia"}`,
+        `{"status":"success","message":"Account Validated.","token":"${token}","url":"","accountType":"growtopia"}`,
     );
 });
-
 app.all('/player/growid/checktoken', (req, res) => {
     const { refreshToken } = req.body;
     res.json({
@@ -61,13 +65,8 @@ app.all('/player/growid/checktoken', (req, res) => {
         accountType: 'growtopia',
     });
 });
-
-app.post('/player/validate/close', function (req, res) {
-    res.send('<script>window.close();</script>');
-});
-
 app.get('/', function (req, res) {
-    res.send('Hello World!');
+   res.send('Hello Word');
 });
 
 app.listen(5000, function () {
