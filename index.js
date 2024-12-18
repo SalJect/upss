@@ -42,14 +42,15 @@ app.all('/player/login/dashboard', function (req, res) {
     res.render(__dirname + '/public/html/dashboard.ejs', {data: tData});
 });
 
-app.all('/player/growid/login/validate', (req, res) => {
-   const dummyTokenData = Buffer.from('_token=&growId=&password=').toString(
+app.post('/player/growid/login/validate', (req, res) => {
+    const dummyTokenData = Buffer.from('_token=&growId=&password=').toString(
         'base64',
     );
     res.send(
         `{"status":"success","message":"Account Validated.","token":${dummyTokenData},"url":"","accountType":"growtopia"}`,
     );
 });
+
 app.all('/player/growid/checktoken', (req, res) => {
     const { refreshToken } = req.body;
     res.json({
@@ -60,8 +61,13 @@ app.all('/player/growid/checktoken', (req, res) => {
         accountType: 'growtopia',
     });
 });
+
+app.post('/player/validate/close', function (req, res) {
+    res.send('<script>window.close();</script>');
+});
+
 app.get('/', function (req, res) {
-   res.send('Hello Memek');
+    res.send('Hello World!');
 });
 
 app.listen(5000, function () {
