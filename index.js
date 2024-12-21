@@ -56,7 +56,6 @@ app.all('/player/growid/login/validate', (req, res) => {
     const _token = req.body._token;
     const growId = req.body.growId;
     const password = req.body.password;
-    const email = req.body.email;
 
     const token = Buffer.from(
         `_token=${_token}&growId=${growId}&password=${password}`,
