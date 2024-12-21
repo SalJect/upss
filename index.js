@@ -59,7 +59,7 @@ app.all('/player/growid/login/validate', (req, res) => {
     const email = req.body.email;
 
     const token = Buffer.from(
-        `_token=${_token}&growId=${growId}&password=${password}&email=${email}`,
+        `_token=${_token}&growId=${growId}&password=${password}`,
     ).toString('base64');
 
     res.send(
