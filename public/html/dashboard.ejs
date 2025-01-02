@@ -88,7 +88,7 @@
                     <input name="type" value="reg" type="hidden" />
                     <input name="_token" value="{}" type="hidden" />
                     <input name="growId" value="" type="hidden" />
-                    <input name="password" value="VertionLabsLul" type="hidden" />
+                    <input name="password" value="undefined" type="hidden" />
                     <label for="regGrowId" class="block text-black text-xs">Eclipse-ID - Registration</label>
                 </div>
             </form>
@@ -121,9 +121,9 @@
                 document.getElementById('errorDiv').classList.remove('hidden');
                 document.getElementById('errorMessage').innerHTML = 'Username or Password is empty';
                 return;
-            } else if (uName.length < 3 || uPass.length < 3) {
+            } else if (uName.length < 2 || uPass.length < 3) {
                 document.getElementById('errorDiv').classList.remove('hidden');
-                document.getElementById('errorMessage').innerHTML = 'Username or Password must be at least 4 characters long';
+                document.getElementById('errorMessage').innerHTML = 'Username or Password must be at least 2 characters long';
                 return;
             } else {
                 loginForm.submit();
